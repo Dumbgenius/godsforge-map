@@ -1,5 +1,6 @@
 canvas = document.getElementById("mapCanvas");
 cellDetailsContainer = document.getElementById("thingsInCell");
+cellNameContainer = document.getElementById("cellName")
 map = []
 
 numHorizCells = 20
@@ -18,6 +19,7 @@ function loadMap(stuff) {
 		for (var j=0; j<numVertCells; j++) {
 			var tmp = {
 				void: true,
+				landName: "Empty Void",
 				colour: voidColour,
 				fortifications: [],
 				equipment: [],
@@ -29,8 +31,9 @@ function loadMap(stuff) {
 			for (var k=0; k<stuff.length; k++) { //populate the cell
 				if (stuff[k].x == i && stuff[k].y == j) {
 					if (stuff[k].type=="land") {
-						tmp.void = false
-						tmp.colour = stuff[k].colour
+						tmp.void = false;
+						tmp.colour = stuff[k].colour;
+						tmp.landName = stuff[k].landName;
 					}
 					if (stuff[k].type=="fortification") {
 						tmp.fortifications.push(stuff[k])
@@ -93,3 +96,25 @@ xhttp.onreadystatechange = function() {
 };
 xhttp.open("GET", "stuff.json", true);
 xhttp.send();
+
+
+
+
+
+document.getElementById("mainCanvas").addEventListener("mousemove", function(e) {
+	var mouseX = e.clientX - Math.floor(canvas.getBoundingClientRect().left);
+	var mouseY = e.clientY - Math.floor(canvas.getBoundingClientRect().top);
+	var hoverX = Math.floor(mouseX/cellWidth);
+	var hoverY = Math.floor(mouseY/cellHeight);
+	
+	hoverCell = map[hoverX][hoverY];
+
+	cellNameContainer.innerHTML = hoverCell.landName;
+	cellDetailsContainer.innerHTML = JSON.stringify(hoverCell); //TODO: IMPROVE THIS
+})
+
+document.getElementById("mainCanvas").addEventListener("mouseleave", function(e) {
+	cellNameContainer.innerHTML = "";
+	cellDetailsContainer.innerHTML = "";
+})
+
