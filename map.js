@@ -83,7 +83,102 @@ function drawMap() {
 	}
 }
 
+function listOfStuffIn(cell) {
+	out = ""
 
+	if (cell.creatures.length > 0) {
+		out += "<li>Creatures<ul>"
+
+		for (var i=0; i<cell.creatures.length; i++) {
+			var c = cell.creatures[i];
+
+			var keywords = "";
+			for (var j=0; j<c.keywords.length; j++) {
+				if (j = 0) {keywords += " ("}
+				if (j > 0) {keywords += ", "}
+				keywords + c.keywords[j];
+			}
+			if (keywords!="") {keywords += ")"}
+
+			var traits = "";
+			for (var j=0; j<c.traits.length; j++) {
+				if (j = 0) {traits += " ("}
+				if (j > 0) {traits += ", "}
+				traits + c.traits[j];
+			}
+			if (traits!="") {traits += ")"}
+
+			out += "<li>" + c.value + "DP " + c.type + keywords + traits + ": " + c.name + ". </li>"
+		}
+
+		out += "</ul></li>"
+	}
+
+	if (cell.fortifications.length > 0) {
+		out += "<li>Fortifications<ul>"
+
+		for (var i=0; i<cell.fortifications.length; i++) {
+			var c = cell.fortifications[i];
+
+			var keywords = "";
+			for (var j=0; j<c.keywords.length; j++) {
+				if (j = 0) {keywords += " ("}
+				if (j > 0) {keywords += ", "}
+				keywords + c.keywords[j];
+			}
+			if (keywords!="") {keywords += ")"}
+
+			out += "<li>" + c.value + "DP " + c.type + keywords + ": " + c.name + ". </li>"
+		}
+
+		out += "</ul></li>"
+	}
+
+	if (cell.equipment.length > 0) {
+		out += "<li>Equipment<ul>"
+
+		for (var i=0; i<cell.equipment.length; i++) {
+			var c = cell.equipment[i];
+
+			var keywords = "";
+			for (var j=0; j<c.keywords.length; j++) {
+				if (j = 0) {keywords += " ("}
+				if (j > 0) {keywords += ", "}
+				keywords + c.keywords[j];
+			}
+			if (keywords!="") {keywords += ")"}
+
+			out += "<li>" + c.value + "DP " + c.type + keywords + ": " + c.name + ". </li>"
+		}
+
+		out += "</ul></li>"
+	}
+
+	if (cell.artifacts.length > 0) {
+		out += "<li>Artifacts<ul>"
+
+		for (var i=0; i<cell.artifacts.length; i++) {
+			var c = cell.artifacts[i];
+
+			var keywords = "";
+			for (var j=0; j<c.keywords.length; j++) {
+				if (j = 0) {keywords += " ("}
+				if (j > 0) {keywords += ", "}
+				keywords + c.keywords[j];
+			}
+			if (keywords!="") {keywords += ")"}
+
+			var shards;
+			if (c.shards == 0) {shards = "no shard"}
+			if (c.shards == 1) {shards = "shard"}
+			if (c.shards > 1) {shards = c.shards + " shards"}
+
+			out += "<li>" + c.value + "DP " + c.type + keywords + " (" + shards + ")" + ": " + c.name + ". </li>"
+		}
+
+		out += "</ul></li>"
+	}
+}
 
 
 loadMap([]);
@@ -112,7 +207,7 @@ canvas.addEventListener("mousemove", function(e) {
 	hoverCell = map[hoverX][hoverY];
 
 	cellNameContainer.innerHTML = hoverCell.landName;
-	cellDetailsContainer.innerHTML = JSON.stringify(hoverCell); //TODO: IMPROVE THIS
+	cellDetailsContainer.innerHTML = listOfStuffIn(hoverCell); //TODO: IMPROVE THIS
 })
 
 canvas.addEventListener("mouseleave", function(e) {
