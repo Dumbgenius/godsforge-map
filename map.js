@@ -1,14 +1,3 @@
-function ajaxRequest(dest, callback) {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			callback();
-		}
-	};
-	xhttp.open("GET", dest, true);
-	xhttp.send();
-}
-
 canvas = document.getElementById("mapCanvas");
 cellDetailsContainer = document.getElementById("thingsInCell");
 map = []
@@ -94,7 +83,11 @@ function drawMap() {
 
 loadMap([])
 
-ajaxRequest("stuff.json", function(){
-	var stuff = JSON.parse(this.responseText);
-	loadMap(stuff);
-})
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		loadMap(JSON.parse(this.responseText))
+	}
+};
+xhttp.open("GET", dest, true);
+xhttp.send();
