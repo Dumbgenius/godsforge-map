@@ -65,7 +65,7 @@ function drawMap() {
 
 			if (map[x][y].creatures.length > 0) {
 				ctx.beginPath();
-				ctx.arc( (x+0.5) * cellWidth, (y+0.5) * cellWidth, cellWidth*0.3, 0, 2*Math.PI );
+				ctx.arc( (x+0.5) * cellWidth, (y+0.5) * cellWidth, cellWidth*0.2, 0, 2*Math.PI );
 
 				ctx.fillStyle = creatureColour;
 				ctx.strokeStyle = voidColour;
@@ -81,12 +81,14 @@ function drawMap() {
 
 
 
-loadMap([])
+loadMap([]);
+drawMap();
 
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
-		loadMap(JSON.parse(this.responseText))
+		loadMap(JSON.parse(this.responseText));
+		drawMap();
 	}
 };
 xhttp.open("GET", "stuff.json", true);
