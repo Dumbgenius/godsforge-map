@@ -89,5 +89,5 @@ xhttp.onreadystatechange = function() {
 		loadMap(JSON.parse(this.responseText))
 	}
 };
-xhttp.open("GET", dest, true);
+xhttp.open("GET", "stuff.json", true);
 xhttp.send();
