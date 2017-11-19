@@ -101,7 +101,7 @@ xhttp.send();
 
 
 
-document.getElementById("mainCanvas").addEventListener("mousemove", function(e) {
+canvas.addEventListener("mousemove", function(e) {
 	var mouseX = e.clientX - Math.floor(canvas.getBoundingClientRect().left);
 	var mouseY = e.clientY - Math.floor(canvas.getBoundingClientRect().top);
 	var hoverX = Math.floor(mouseX/cellWidth);
@@ -113,7 +113,7 @@ document.getElementById("mainCanvas").addEventListener("mousemove", function(e) 
 	cellDetailsContainer.innerHTML = JSON.stringify(hoverCell); //TODO: IMPROVE THIS
 })
 
-document.getElementById("mainCanvas").addEventListener("mouseleave", function(e) {
+canvas.addEventListener("mouseleave", function(e) {
 	cellNameContainer.innerHTML = "";
 	cellDetailsContainer.innerHTML = "";
 })
