@@ -63,9 +63,9 @@ function drawMap() {
 			ctx.fillStyle = map[x][y].colour
 			ctx.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellHeight);
 
-			if (map[x][y].creatures) {
+			if (map[x][y].creatures.length > 0) {
 				ctx.beginPath();
-				ctx.arc( (x+0.5) * cellWidth, (y+0.5) * cellWidth, cellWidth*0.4, 0, 2*Math.PI );
+				ctx.arc( (x+0.5) * cellWidth, (y+0.5) * cellWidth, cellWidth*0.3, 0, 2*Math.PI );
 
 				ctx.fillStyle = creatureColour;
 				ctx.strokeStyle = voidColour;
