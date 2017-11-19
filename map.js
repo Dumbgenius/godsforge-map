@@ -18,6 +18,8 @@ function loadMap(stuff) {
 		var row=[];
 		for (var j=0; j<numVertCells; j++) {
 			var tmp = {
+				x: i,
+				y: j,
 				void: true,
 				landName: "Empty Void",
 				colour: voidColour,
@@ -33,7 +35,7 @@ function loadMap(stuff) {
 					if (stuff[k].type=="land") {
 						tmp.void = false;
 						tmp.colour = stuff[k].colour;
-						tmp.landName = stuff[k].landName;
+						tmp.landName = stuff[k].name;
 					}
 					if (stuff[k].type=="fortification") {
 						tmp.fortifications.push(stuff[k])
