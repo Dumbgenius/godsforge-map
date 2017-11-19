@@ -213,9 +213,9 @@ canvas.addEventListener("mousemove", function(e) {
 	var extras = ""
 	if (!hoverCell.void) {
 		extras = " (" + hoverCell.land.value + "DP";
-			for (var j=0; j<c.keywords.length; j++) {
+			for (var j=0; j<hoverCell.land.keywords.length; j++) {
 				extras += ", "
-				extras += c.keywords[j];
+				extras += hoverCell.land.keywords[j];
 			}
 			extras += ")"
 	}
