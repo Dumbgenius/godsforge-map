@@ -36,6 +36,7 @@ function loadMap(stuff) {
 						tmp.void = false;
 						tmp.colour = stuff[k].colour;
 						tmp.landName = stuff[k].name;
+						tmp.land = stuff[k];
 					}
 					if (stuff[k].type=="fortification") {
 						tmp.fortifications.push(stuff[k])
@@ -208,7 +209,18 @@ canvas.addEventListener("mousemove", function(e) {
 	
 	hoverCell = map[hoverX][hoverY];
 
-	cellNameContainer.innerHTML = hoverCell.landName;
+	var nameUsed = hoverCell.landName;
+	var extras = ""
+	if (!hoverCell.void) {
+		extras = " (" + hoverCell.land.value + "DP";
+			for (var j=0; j<c.keywords.length; j++) {
+				extras += ", "
+				extras += c.keywords[j];
+			}
+			extras += ")"
+	}
+
+	cellNameContainer.innerHTML = nameUsed + extras;
 	cellDetailsContainer.innerHTML = listOfStuffIn(hoverCell); //TODO: IMPROVE THIS
 })
 
