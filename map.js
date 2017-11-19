@@ -94,7 +94,7 @@ function listOfStuffIn(cell) {
 
 			var keywords = "";
 			for (var j=0; j<c.keywords.length; j++) {
-				if (j = 0) {keywords += " ("}
+				if (j == 0) {keywords += " ("}
 				if (j > 0) {keywords += ", "}
 				keywords + c.keywords[j];
 			}
@@ -102,7 +102,7 @@ function listOfStuffIn(cell) {
 
 			var traits = "";
 			for (var j=0; j<c.traits.length; j++) {
-				if (j = 0) {traits += " ("}
+				if (j == 0) {traits += " ("}
 				if (j > 0) {traits += ", "}
 				traits + c.traits[j];
 			}
@@ -122,7 +122,7 @@ function listOfStuffIn(cell) {
 
 			var keywords = "";
 			for (var j=0; j<c.keywords.length; j++) {
-				if (j = 0) {keywords += " ("}
+				if (j == 0) {keywords += " ("}
 				if (j > 0) {keywords += ", "}
 				keywords + c.keywords[j];
 			}
@@ -142,7 +142,7 @@ function listOfStuffIn(cell) {
 
 			var keywords = "";
 			for (var j=0; j<c.keywords.length; j++) {
-				if (j = 0) {keywords += " ("}
+				if (j == 0) {keywords += " ("}
 				if (j > 0) {keywords += ", "}
 				keywords + c.keywords[j];
 			}
@@ -162,7 +162,7 @@ function listOfStuffIn(cell) {
 
 			var keywords = "";
 			for (var j=0; j<c.keywords.length; j++) {
-				if (j = 0) {keywords += " ("}
+				if (j == 0) {keywords += " ("}
 				if (j > 0) {keywords += ", "}
 				keywords + c.keywords[j];
 			}
