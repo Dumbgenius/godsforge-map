@@ -178,6 +178,8 @@ function listOfStuffIn(cell) {
 
 		out += "</ul></li>"
 	}
+
+	return out;
 }
 
 
