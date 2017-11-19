@@ -94,18 +94,22 @@ function listOfStuffIn(cell) {
 			var c = cell.creatures[i];
 
 			var keywords = "";
-			for (var j=0; j<c.keywords.length; j++) {
-				if (j == 0) {keywords += " ("}
-				if (j > 0) {keywords += ", "}
-				keywords += c.keywords[j];
+			if (c.keywords && c.keywords.length>0) {
+				for (var j=0; j<c.keywords.length; j++) {
+					if (j == 0) {keywords += " ("}
+					if (j > 0) {keywords += ", "}
+					keywords += c.keywords[j];
+				}
 			}
 			if (keywords!="") {keywords += ")"}
 
 			var traits = "";
-			for (var j=0; j<c.traits.length; j++) {
-				if (j == 0) {traits += " ("}
-				if (j > 0) {traits += ", "}
-				traits += c.traits[j];
+			if (c.traits && c.traits.length>0) {
+				for (var j=0; j<c.traits.length; j++) {
+					if (j == 0) {traits += " ("}
+					if (j > 0) {traits += ", "}
+					traits += c.traits[j];
+				}
 			}
 			if (traits!="") {traits += ")"}
 
@@ -122,10 +126,12 @@ function listOfStuffIn(cell) {
 			var c = cell.fortifications[i];
 
 			var keywords = "";
-			for (var j=0; j<c.keywords.length; j++) {
-				if (j == 0) {keywords += " ("}
-				if (j > 0) {keywords += ", "}
-				keywords += c.keywords[j];
+			if (c.keywords && c.keywords.length>0) {
+				for (var j=0; j<c.keywords.length; j++) {
+					if (j == 0) {keywords += " ("}
+					if (j > 0) {keywords += ", "}
+					keywords += c.keywords[j];
+				}
 			}
 			if (keywords!="") {keywords += ")"}
 
@@ -142,10 +148,12 @@ function listOfStuffIn(cell) {
 			var c = cell.equipment[i];
 
 			var keywords = "";
-			for (var j=0; j<c.keywords.length; j++) {
-				if (j == 0) {keywords += " ("}
-				if (j > 0) {keywords += ", "}
-				keywords += c.keywords[j];
+			if (c.keywords && c.keywords.length>0) {
+				for (var j=0; j<c.keywords.length; j++) {
+					if (j == 0) {keywords += " ("}
+					if (j > 0) {keywords += ", "}
+					keywords += c.keywords[j];
+				}
 			}
 			if (keywords!="") {keywords += ")"}
 
@@ -162,10 +170,12 @@ function listOfStuffIn(cell) {
 			var c = cell.artifacts[i];
 
 			var keywords = "";
-			for (var j=0; j<c.keywords.length; j++) {
-				if (j == 0) {keywords += " ("}
-				if (j > 0) {keywords += ", "}
-				keywords += c.keywords[j];
+			if (c.keywords && c.keywords.length>0) {
+				for (var j=0; j<c.keywords.length; j++) {
+					if (j == 0) {keywords += " ("}
+					if (j > 0) {keywords += ", "}
+					keywords += c.keywords[j];
+				}
 			}
 			if (keywords!="") {keywords += ")"}
 
@@ -213,11 +223,13 @@ canvas.addEventListener("mousemove", function(e) {
 	var extras = ""
 	if (!hoverCell.void) {
 		extras = " (" + hoverCell.land.value + "DP";
-			for (var j=0; j<hoverCell.land.keywords.length; j++) {
-				extras += ", "
-				extras += hoverCell.land.keywords[j];
+			if (hoverCell.land.keywords && hoverCell.land.keywords.length>0) {
+				for (var j=0; j<hoverCell.land.keywords.length; j++) {
+					extras += ", "
+					extras += hoverCell.land.keywords[j];
+				}
 			}
-			extras += ")"
+		extras += ")"
 	}
 
 	cellNameContainer.innerHTML = nameUsed + extras;
